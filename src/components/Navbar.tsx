@@ -33,7 +33,7 @@ export default function Navbar() {
           : "bg-gradient-to-r from-slate-900/80 via-purple-900/80 to-slate-900/80 backdrop-blur-sm"
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo with AI-themed glow effect */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative">
@@ -74,7 +74,7 @@ export default function Navbar() {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Sparkles className="w-4 h-4 animate-pulse" />
-              Deploy Agent
+              Schedule a Call
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
@@ -134,7 +134,7 @@ export default function Navbar() {
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <Bot className="w-4 h-4" />
-                Deploy AI Agent
+                Schedule A Call
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>

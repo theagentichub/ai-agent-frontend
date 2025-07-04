@@ -28,7 +28,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <div className="relative min-h-screen pt-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+    <div className="relative min-h-screen pt-20 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
 
@@ -65,12 +65,12 @@ export default function Banner() {
             }`}
           >
             <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
-              Transform your business
+              Empower your business
               <br />
               <span className="relative">
-                with the{" "}
+                with{" "}
                 <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
-                  power of AI
+                  next-gen AI solutions
                 </span>
                 <div className="absolute -top-2 -right-2">
                   <Sparkles className="w-8 h-8 text-yellow-400 animate-spin" />
@@ -88,9 +88,8 @@ export default function Banner() {
             }`}
           >
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              In a world where automation is reshaping industries, your business
-              deserves the most intelligent solutions. Our AI agents leverage
-              cutting-edge machine learning to revolutionize your operations.
+              We build intelligent systems that automate, optimize, and elevate business performance. 
+              From AI chatbots to predictive analytics—our solutions are tailored for growth.
             </p>
           </div>
 
@@ -105,7 +104,7 @@ export default function Banner() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full hover:border-blue-400 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 backdrop-blur-sm">
                 <span className="flex items-center gap-2">
-                  Get Started Today
+                  Request a Demo
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
@@ -113,7 +112,7 @@ export default function Banner() {
               <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105">
                 <span className="flex items-center gap-2">
                   <Bot className="w-4 h-4" />
-                  Deploy AI Agent
+                  Launch Your AI Agent
                 </span>
               </button>
             </div>
@@ -131,18 +130,18 @@ export default function Banner() {
               {[
                 {
                   icon: Brain,
-                  title: "Neural Processing",
-                  desc: "Advanced AI reasoning",
+                  title: "AI Strategy & Consulting",
+                  desc: "We guide your AI roadmap from ideation to execution.",
                 },
                 {
                   icon: Zap,
-                  title: "Lightning Fast",
-                  desc: "Instant responses",
+                  title: "Intelligent Automation",
+                  desc: "Streamline tasks using smart agents and workflows.",
                 },
                 {
                   icon: Cpu,
-                  title: "Smart Automation",
-                  desc: "Intelligent workflows",
+                  title: "Custom AI Development",
+                  desc: "Build tailored machine learning models & tools.",
                 },
               ].map(({ icon: Icon, title, desc }, index) => (
                 <div

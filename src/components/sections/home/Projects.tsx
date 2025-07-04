@@ -235,7 +235,7 @@ export default function ProjectsSection() {
       <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-1000" />
       <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl animate-pulse delay-500" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
