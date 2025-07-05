@@ -114,7 +114,7 @@ const ServiceVisual: React.FC<{ type: string; color: string }> = ({
     );
   }
 
-  // Custom solutions visual
+
   return (
     <div className={baseClasses}>
       <div className="relative">

@@ -125,7 +125,6 @@ export default function ContactPage() {
     }
   };
 
-  console.log("Form Data:", formData);
 
   const [animationStage, setAnimationStage] = useState(0);
 
@@ -136,7 +135,7 @@ export default function ContactPage() {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden ">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto py-8">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
 
         {[Brain, Cpu, Bot, Sparkles, Zap].map((Icon, index) => (
@@ -173,7 +172,7 @@ export default function ContactPage() {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
                 Get in{" "}
                 <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-gradient-x">
                   Touch
