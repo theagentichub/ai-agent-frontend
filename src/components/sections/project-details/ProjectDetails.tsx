@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useInView,
-  Variants,
-} from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import {
   Brain,
   Zap,
@@ -29,7 +23,6 @@ import {
   Globe,
   BarChart3,
   Cpu,
-  Quote,
 } from "lucide-react";
 
 interface ProjectData {
@@ -275,16 +268,12 @@ export default function ProjectDetailsPage() {
     offset: ["start end", "end start"],
   });
 
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   const tabs = [
     { id: "overview", label: "Overview", icon: Eye },
     { id: "features", label: "Features", icon: Sparkles },
     { id: "technology", label: "Technology", icon: Code },
-    { id: "timeline", label: "Timeline", icon: Calendar },
-    { id: "results", label: "Results", icon: BarChart3 },
-    { id: "challenges", label: "Challenges", icon: Target },
   ];
 
   const containerVariants = {
@@ -359,37 +348,6 @@ export default function ProjectDetailsPage() {
           </div>
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center justify-center gap-2 mb-4"
-            >
-              <ArrowLeft className="w-5 h-5 text-blue-400 cursor-pointer hover:scale-110 transition-transform" />
-              <span className="text-blue-400 font-medium">
-                Back to Projects
-              </span>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center justify-center gap-3 mb-6"
-            >
-              <div className="p-3 bg-blue-500/20 rounded-xl">
-                <projectData.icon className="w-8 h-8 text-blue-400" />
-              </div>
-              <div className="text-left">
-                <span className="text-blue-400 font-medium text-sm">
-                  {projectData.category}
-                </span>
-                <div
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    statusColors[projectData.status]
-                  } mt-1`}
-                >
-                  {projectData.status}
-                </div>
-              </div>
-            </motion.div>
-
             <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
@@ -560,37 +518,6 @@ export default function ProjectDetailsPage() {
                       ))}
                     </div>
                   </div>
-
-                  {/* Testimonial */}
-                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Quote className="w-6 h-6 text-blue-400" />
-                      <h3 className="text-lg font-semibold text-white">
-                        Client Testimonial
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 italic mb-4">
-                      {projectData.testimonial.quote}
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={projectData.testimonial.avatar}
-                        alt={projectData.testimonial.author}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <div>
-                        <div className="text-white font-medium">
-                          {projectData.testimonial.author}
-                        </div>
-                        <div className="text-gray-400 text-sm">
-                          {projectData.testimonial.position}
-                        </div>
-                        <div className="text-blue-400 text-sm">
-                          {projectData.testimonial.company}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
 
@@ -690,7 +617,7 @@ export default function ProjectDetailsPage() {
               >
                 Technology Stack
               </motion.h2>
-              <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {Object.entries(
                   projectData.technologies.reduce((acc, tech) => {
                     if (!acc[tech.category]) acc[tech.category] = [];
@@ -702,7 +629,7 @@ export default function ProjectDetailsPage() {
                     <h3 className="text-xl font-semibold text-white mb-4">
                       {category}
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="">
                       {techs.map((tech, index) => (
                         <div
                           key={index}
@@ -731,163 +658,8 @@ export default function ProjectDetailsPage() {
               </div>
             </motion.div>
           )}
-
-          {/* Timeline Tab */}
-          {activeTab === "timeline" && (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-            >
-              <motion.h2
-                variants={itemVariants}
-                className="text-3xl font-bold text-white mb-8"
-              >
-                Project Timeline
-              </motion.h2>
-              <div className="space-y-6">
-                {projectData.timeline.map((phase, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="flex gap-6 group"
-                  >
-                    <div className="flex flex-col items-center">
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          phase.status === "completed"
-                            ? "bg-green-400"
-                            : phase.status === "ongoing"
-                            ? "bg-yellow-400"
-                            : "bg-gray-400"
-                        }`}
-                      />
-                      {index < projectData.timeline.length - 1 && (
-                        <div className="w-0.5 h-16 bg-gray-600 mt-2" />
-                      )}
-                    </div>
-                    <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 group-hover:border-blue-400/50 transition-all duration-300">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-xl font-semibold text-white">
-                          {phase.phase}
-                        </h3>
-                        <div className="flex items-center gap-3">
-                          <span className="text-gray-400">
-                            {phase.duration}
-                          </span>
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs ${
-                              statusColors[phase.status]
-                            }`}
-                          >
-                            {phase.status}
-                          </span>
-                        </div>
-                      </div>
-                      <p className="text-gray-300">{phase.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Results Tab */}
-          {activeTab === "results" && (
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-            >
-              <motion.h2
-                variants={itemVariants}
-                className="text-3xl font-bold text-white mb-8"
-              >
-                Project Results
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projectData.results.map((result, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="p-3 bg-blue-500/20 rounded-xl group-hover:scale-110 transition-transform">
-                        <result.icon className="w-6 h-6 text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="text-3xl font-bold text-white">
-                          {result.value}
-                        </div>
-                        <div className="text-blue-400 font-medium">
-                          {result.metric}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-gray-300">{result.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Challenges Tab */}
-          {activeTab === "challenges" && (
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={containerVariants}
-            >
-              <motion.h2
-                variants={itemVariants}
-                className="text-3xl font-bold text-white mb-8"
-              >
-                Challenges & Solutions
-              </motion.h2>
-              <div className="space-y-8">
-                {projectData.challenges.map((challenge, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 bg-blue-500/20 rounded-xl">
-                        <Target className="w-6 h-6 text-blue-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
-                          {challenge.title}
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div>
-                            <h4 className="text-sm font-medium text-gray-400 mb-2">
-                              Challenge
-                            </h4>
-                            <p className="text-gray-300">
-                              {challenge.description}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-medium text-gray-400 mb-2">
-                              Our Solution
-                            </h4>
-                            <p className="text-gray-300">
-                              {challenge.solution}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
         </div>
 
-        {/* Image Modal */}
         {isImageModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
             <button

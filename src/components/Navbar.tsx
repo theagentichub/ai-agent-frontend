@@ -7,8 +7,8 @@ import clsx from "clsx";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "About Us", href: "#about-us" },
+  { label: "Services", href: "#services" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -24,6 +24,26 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleScrollClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    // Only handle hash links
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.replace("#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+    // Close mobile menu if open
+    setMenuOpen(false);
+  };
+
   return (
     <header
       className={clsx(
@@ -34,22 +54,21 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo with AI-themed glow effect */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative">
             <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-md group-hover:bg-cyan-400/30 transition-all duration-300"></div>
           </div>
-          <span className="text-xl font-bold text-gray-900 hidden sm:block text-white">
-            AgenticHub
-          </span>
+          <span className="text-xl font-bold text-white">AgenticHub</span>
         </Link>
 
-        {/* Desktop Nav with AI-themed hover effects */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => handleScrollClick(e, link.href)}
               className={clsx(
                 "text-sm font-medium text-gray-300 hover:text-white transition-all duration-300",
                 "relative group px-3 py-2",
@@ -66,7 +85,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* AI-themed CTA Button */}
+        {/* CTA Button */}
         <div className="hidden md:flex">
           <Link
             href="/get-started"
@@ -74,13 +93,13 @@ export default function Navbar() {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Sparkles className="w-4 h-4 animate-pulse" />
-              Schedule a Call
+              Book Intro Call
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Link>
         </div>
 
-        {/* Mobile Menu Button with AI styling */}
+        {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-white rounded-md hover:bg-white/10 transition-all duration-300 relative group"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -101,7 +120,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown with AI-themed styling */}
+      {/* Mobile Dropdown */}
       <div
         className={clsx(
           "md:hidden bg-gradient-to-b from-slate-900/95 via-purple-900/95 to-slate-900/95 backdrop-blur-lg border-t border-white/10 overflow-hidden transition-all duration-300 ease-in-out",
@@ -114,7 +133,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleScrollClick(e, link.href)}
                 className="text-gray-300 text-base py-3 px-4 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-300 font-medium relative group border border-transparent hover:border-white/20"
                 style={{
                   animationDelay: `${index * 50}ms`,

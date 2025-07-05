@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Sparkles,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function AboutUsSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -138,6 +139,7 @@ export default function AboutUsSection() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
+      id="about-us"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
@@ -320,7 +322,10 @@ export default function AboutUsSection() {
               transition={{ duration: 0.2 }}
             >
               <Target className="w-5 h-5" />
-              <span className="font-medium">Discover Our Mission</span>
+              <Link href="/contact">
+                <span className="font-medium">Get Started</span>
+              </Link>
+
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{

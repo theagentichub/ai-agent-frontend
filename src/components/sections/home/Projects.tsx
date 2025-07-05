@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion, useScroll, useTransform, useInView,Variants } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  Variants,
+} from "framer-motion";
 import {
   Brain,
   Bot,
@@ -24,10 +30,6 @@ interface Project {
   icon: React.ComponentType<{ size?: number; className?: string }>;
   image: string;
   technologies: string[];
-  results: {
-    metric: string;
-    value: string;
-  }[];
   year: string;
   client: string;
   status: "completed" | "ongoing" | "upcoming";
@@ -45,11 +47,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=400&fit=crop",
     technologies: ["GPT-4", "NLP", "Sentiment Analysis", "React", "Node.js"],
-    results: [
-      { metric: "Response Time", value: "< 2 sec" },
-      { metric: "Accuracy", value: "95%" },
-      { metric: "Cost Reduction", value: "60%" },
-    ],
+
     year: "2024",
     client: "TechCorp Inc.",
     status: "completed",
@@ -65,11 +63,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     technologies: ["Python", "TensorFlow", "Apache Spark", "AWS", "Docker"],
-    results: [
-      { metric: "Prediction Accuracy", value: "89%" },
-      { metric: "Processing Speed", value: "10x faster" },
-      { metric: "ROI Increase", value: "180%" },
-    ],
+
     year: "2024",
     client: "DataFlow Solutions",
     status: "completed",
@@ -85,11 +79,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop",
     technologies: ["OpenCV", "PyTorch", "YOLO", "FastAPI", "Redis"],
-    results: [
-      { metric: "Defect Detection", value: "99.2%" },
-      { metric: "False Positives", value: "< 0.5%" },
-      { metric: "Efficiency Gain", value: "300%" },
-    ],
+
     year: "2024",
     client: "Manufacturing Co.",
     status: "completed",
@@ -105,11 +95,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
     technologies: ["Scikit-learn", "Apache Kafka", "PostgreSQL", "Kubernetes"],
-    results: [
-      { metric: "Fraud Detection", value: "96%" },
-      { metric: "False Alarms", value: "< 2%" },
-      { metric: "Processing Time", value: "< 100ms" },
-    ],
+
     year: "2024",
     client: "SecureBank",
     status: "ongoing",
@@ -125,11 +111,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop",
     technologies: ["AutoML", "Hyperopt", "MLflow", "Jupyter", "Python"],
-    results: [
-      { metric: "Model Performance", value: "+25%" },
-      { metric: "Training Time", value: "-40%" },
-      { metric: "Resource Usage", value: "-30%" },
-    ],
+
     year: "2024",
     client: "AI Research Lab",
     status: "completed",
@@ -145,11 +127,7 @@ const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop",
     technologies: ["UiPath", "OCR", "NLP", "Azure", "Power Automate"],
-    results: [
-      { metric: "Process Speed", value: "500% faster" },
-      { metric: "Error Reduction", value: "85%" },
-      { metric: "Cost Savings", value: "$2M/year" },
-    ],
+
     year: "2024",
     client: "Enterprise Corp",
     status: "ongoing",
@@ -159,12 +137,11 @@ const projects: Project[] = [
 
 const categories = [
   "All",
-  "Conversational AI",
   "Machine Learning",
-  "Computer Vision",
-  "Security AI",
-  "AutoML",
-  "RPA + AI",
+  "Web Development",
+  "Data Analytics",
+  "Data Science",
+  "AI Agents",
 ];
 
 export default function ProjectsSection() {
@@ -204,7 +181,7 @@ export default function ProjectsSection() {
     },
   };
 
-  const itemVariants : Variants = {
+  const itemVariants: Variants = {
     hidden: { y: 60, opacity: 0 },
     visible: {
       y: 0,
@@ -216,8 +193,6 @@ export default function ProjectsSection() {
       },
     },
   };
-
-
 
   return (
     <section
@@ -269,8 +244,8 @@ export default function ProjectsSection() {
             variants={itemVariants}
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover how we&apos;ve helped businesses across industries leverage the
-            power of AI to achieve unprecedented growth and efficiency.
+            Discover how we&apos;ve helped businesses across industries leverage
+            the power of AI to achieve unprecedented growth and efficiency.
           </motion.p>
         </motion.div>
 
@@ -478,18 +453,6 @@ function ProjectCard({
                 +{project.technologies.length - 3} more
               </span>
             )}
-          </div>
-
-          {/* Results */}
-          <div className="grid grid-cols-3 gap-4 mb-4">
-            {project.results.map((result, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-lg font-bold text-white">
-                  {result.value}
-                </div>
-                <div className="text-xs text-gray-400">{result.metric}</div>
-              </div>
-            ))}
           </div>
 
           {/* Footer */}

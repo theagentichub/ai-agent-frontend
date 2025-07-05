@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Brain, Cpu, Zap, Bot, Sparkles, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Banner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,12 +28,19 @@ export default function Banner() {
     setFloatingIcons(icons);
   }, []);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="relative min-h-screen pt-20 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
-      {/* Animated background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
-
-      {/* Floating AI icons */}
       {floatingIcons.map(({ Icon, id, delay }) => (
         <div
           key={id}
@@ -88,12 +96,12 @@ export default function Banner() {
             }`}
           >
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              We build intelligent systems that automate, optimize, and elevate business performance. 
-              From AI chatbots to predictive analytics—our solutions are tailored for growth.
+              We build intelligent systems that automate, optimize, and elevate
+              business performance. From AI chatbots to predictive analytics—our
+              solutions are tailored for growth.
             </p>
           </div>
 
-          {/* CTA Buttons */}
           <div
             className={`transform transition-all duration-1000 delay-500 ${
               isVisible
@@ -102,18 +110,22 @@ export default function Banner() {
             }`}
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full hover:border-blue-400 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 backdrop-blur-sm">
-                <span className="flex items-center gap-2">
-                  Request a Demo
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
+              <Link href="/contact">
+                <button className="group relative px-8 py-4 cursor-pointer bg-transparent border-2 border-white/30 text-white rounded-full hover:border-blue-400 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 backdrop-blur-sm">
+                  <span className="flex items-center gap-2">
+                    Get Started
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </Link>
 
               <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105">
-                <span className="flex items-center gap-2">
-                  <Bot className="w-4 h-4" />
-                  Launch Your AI Agent
-                </span>
+                <Link href="#services" onClick={handleScroll}>
+                  <span className="flex items-center gap-2">
+                    <Bot className="w-4 h-4" />
+                    Explore Our Services
+                  </span>
+                </Link>
               </button>
             </div>
           </div>

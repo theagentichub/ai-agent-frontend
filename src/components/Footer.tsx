@@ -3,8 +3,14 @@
 import React from "react";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+  const router = useRouter();
+
+  const handleNavigate = () => {
+    router.push("/contact");
+  };
   return (
     <footer className="bg-gradient-to-br from-zinc-900 via-gray-900 to-zinc-900 relative overflow-hidden">
       {/* Background grid */}
@@ -26,12 +32,16 @@ export default function Footer() {
               </span>
             </h2>
             <p className="text-gray-300 text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0">
-              Partner with us to create intelligent, impactful, and future-ready AI solutions together.
+              Partner with us to create intelligent, impactful, and future-ready
+              AI solutions together.
             </p>
           </div>
 
           <div className="w-full sm:w-auto">
-            <button className="group w-full sm:w-auto px-6 py-4 bg-gradient-to-r from-teal-600 to-indigo-600 text-white rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 flex items-center justify-center gap-2">
+            <button
+              className="group w-full cursor-pointer sm:w-auto px-6 py-4 bg-gradient-to-r from-teal-600 to-indigo-600 text-white rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105 flex items-center justify-center gap-2"
+              onClick={handleNavigate}
+            >
               Let&apos;s Work Together
               <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -52,7 +62,9 @@ export default function Footer() {
 
           {/* Get In Touch */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Get In Touch</h3>
+            <h3 className="text-white text-lg font-semibold mb-4">
+              Get In Touch
+            </h3>
             <div className="space-y-4 text-center sm:text-left">
               <div className="flex items-center gap-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-gray-400" />
@@ -67,7 +79,9 @@ export default function Footer() {
 
           {/* Our Location */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Our Location</h3>
+            <h3 className="text-white text-lg font-semibold mb-4">
+              Our Location
+            </h3>
             <div className="flex gap-3 text-center sm:text-left justify-center sm:justify-start">
               <MapPin className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
               <div className="text-gray-300 text-sm">
@@ -79,7 +93,9 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Subscribe to Newsletter</h3>
+            <h3 className="text-white text-lg font-semibold mb-4">
+              Subscribe to Newsletter
+            </h3>
             <form className="flex flex-col items-left gap-3 w-full">
               <input
                 type="email"
