@@ -134,7 +134,7 @@ export default function AboutUsSection() {
 
   return (
     <motion.section
-      className="relative py-24 bg-gradient-to-b from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden"
+      className="relative py-24 bg-gradient-to-b from-slate-900 via-purple-800/90 to-slate-900 overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
