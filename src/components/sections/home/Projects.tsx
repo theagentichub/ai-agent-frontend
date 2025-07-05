@@ -21,6 +21,7 @@ import {
   Users,
   Award,
 } from "lucide-react";
+import Link from "next/link";
 
 interface Project {
   id: number;
@@ -473,7 +474,7 @@ function ProjectCard({
               whileTap={{ scale: 0.9 }}
               className="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
             >
-              <span className="text-sm">View Details</span>
+              <Link href="/project/2" className="text-sm">View Details</Link>
               <ArrowRight className="w-4 h-4" />
             </motion.button>
           </div>
