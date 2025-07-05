@@ -178,7 +178,7 @@ export default function ContactPage() {
                   Touch
                 </span>
                 <div className="inline-block ml-2">
-                  <Sparkles className="w-12 h-12 text-yellow-400 animate-spin" />
+                  <Sparkles className="w-6 h-auto md:w-12 text-yellow-400 animate-spin" />
                 </div>
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -189,7 +189,7 @@ export default function ContactPage() {
 
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <motion.div
-                className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8"
+                className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-4 md:p-8"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
