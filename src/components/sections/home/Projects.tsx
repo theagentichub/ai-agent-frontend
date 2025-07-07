@@ -220,7 +220,7 @@ export default function ProjectsSection() {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="flex items-center justify-center gap-2 mb-4"
           >
@@ -228,8 +228,24 @@ export default function ProjectsSection() {
             <span className="text-blue-400 font-semibold tracking-wide uppercase text-sm">
               Our Projects
             </span>
-          </motion.div>
+          </motion.div> */}
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 mb-6"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-6 h-6 text-blue-400" />
+            </motion.div>
+            <span className="text-sm font-medium text-gray-300 uppercase tracking-wider">
+              Our Projects
+            </span>
 
+
+          </motion.div>
           <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
@@ -264,11 +280,10 @@ export default function ProjectsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${selectedCategory === category
                   ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-purple-500/25"
                   : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-              }`}
+                }`}
             >
               {category}
             </motion.button>
@@ -382,9 +397,8 @@ function ProjectCard({
       whileHover="hover"
       onHoverStart={onHover}
       onHoverEnd={onLeave}
-      className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden cursor-pointer ${
-        featured ? "lg:col-span-1" : ""
-      }`}
+      className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden cursor-pointer ${featured ? "lg:col-span-1" : ""
+        }`}
     >
       <motion.div
         variants={{
@@ -407,9 +421,8 @@ function ProjectCard({
           {/* Status Badge */}
           <div className="absolute top-4 right-4">
             <span
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                statusColors[project.status]
-              }`}
+              className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[project.status]
+                }`}
             >
               {project.status}
             </span>

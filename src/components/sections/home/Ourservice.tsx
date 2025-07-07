@@ -193,14 +193,26 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-full mb-6 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-orange-400" />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-4 h-4 text-orange-400" />
+
+            </motion.div>
             <span className="text-gray-300 text-sm uppercase tracking-wider">
               Our Services
             </span>
-            <Sparkles className="w-4 h-4 text-orange-400" />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-4 h-4 text-orange-400" />
+            </motion.div>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
